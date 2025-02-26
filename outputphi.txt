@@ -1,1 +1,1 @@
-Negative negative positive
+A: Negative B: Neutral C: Negative

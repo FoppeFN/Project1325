@@ -1,19 +1,20 @@
 import ollama
 
-file_path = r"C:\Users\Nrfop\OneDrive\Desktop\CS325NewP1\Project1real\input.txt"
-
 client = ollama.Client()
-with open(file_path, "r") as file:
-    content = file.read()
+model = "llama3.2:1b"
+
+
+with open("input.txt", "r") as file:
+    prompt = file.readlines()
 
     
-model = "llama3.2:1b"
-prompt = f"Give me a one word response for whether the headlines A, B, and C are positive negative or neutral, no explanation or context needed. {content}"
+with open("outputllama.txt", "w") as output_file:
+    for language_output in prompt:
+        response_prompt = ("Classify the following headline as Negative, Neutral, or Positive, provide only a one word response, this is the headline:" + language_output)
+        response = client.generate(model=model, prompt=response_prompt)
+        output_file.write(response.response + "\n")
 
-response = client.generate(model=model, prompt=prompt)
+        
 
-output_file = "outputllama.txt"
 
-with open(output_file, "w") as file:
-    file.write(response.response)
 
