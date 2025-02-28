@@ -17,7 +17,7 @@ with open("outputphi.txt", "w", encoding = "utf=8") as output_file: #opens the o
             output_file.write(response.response + "\n")
         else:
             split_response = (response.response.lower()).split() #sets a new variable called split response, that first converts it to a string from a list, then splits the 
-            print(split_response)
+            # print(split_response) // code for debugging purposes
             for parsed_data in split_response: #creates a for loop to iterate through our string of split responses, which could be a very long paragraph of data.
                     if parsed_data in ["positive","negative","neutral"]: #if that word is found, the if block is activated
                         output_file.write(parsed_data + "\n") #writes the data to our parsed data file
@@ -25,10 +25,10 @@ with open("outputphi.txt", "w", encoding = "utf=8") as output_file: #opens the o
                         break #breaks the for loop and moves to print out the rest of the garbage text, as we have found connotation word.
             output_rebuild = "" # ensures their is a space in between each word as we rebuild our garbage text output.
             for rebuild in split_response:
-                print(rebuild)
+               # print(rebuild) // code for debugging purposes
                 output_rebuild = output_rebuild + " " + rebuild #this line rebuilds the garbage text data that the LLM is outputting
             output_rebuild += "\n" # in case the LLM writes two long worded responses, this will create a new line in the junk file between the two
-            print(output_rebuild)
+            #print(output_rebuild) // code for debugging purposes
 
             junk_file = open("junkphi.txt", "w", encoding = "utf-8")
             junk_file.write(output_rebuild)
