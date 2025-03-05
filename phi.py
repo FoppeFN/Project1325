@@ -19,7 +19,7 @@ with open("outputphi.txt", "w", encoding = "utf-8") as output_file: #opens the o
             split_response = str(response.response.lower()).split() #sets a new variable called split response, that first converts it to a string from a list and divides our strings into substrings.
             print(split_response) 
             for parsed_data in split_response: #creates a for loop to iterate through our string of split responses, which could be a very long paragraph of data.
-                    if parsed_data in ["positive","negative","neutral"]: #if that word is found, the if block is activated
+                    if parsed_data in ["positive","negative","neutral","negative.","positive.","neutral.","negative,","neutral,","positive,"]: #if that word is found, the if block is activated
                         output_file.write(parsed_data + "\n") #writes the data to our parsed data file
                         split_response.remove(parsed_data) #removes that word from our split_response, as we have already found it and do not want to find it again.
                         break #breaks the for loop and moves to print out the rest of the garbage text, as we have found connotation word.
