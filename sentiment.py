@@ -8,7 +8,7 @@ class SentimentAnalyzer(ABC):
 
 class DoubleLLM(SentimentAnalyzer):
     def __init__(self):
-        self.client = ollama.Client()
+        self.client = ollama.Client(host="host.docker.internal")
         self.phi_model = "phi3:latest"
         self.llama_model = "llama3.2:1b"
 
