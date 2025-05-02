@@ -1,6 +1,7 @@
 import pytest
 import requests
-from sentiment import DualAnalyzer
+from sentiment import DoubleLLM
+
 
 @pytest.mark.parametrize("url", [
     "https://apnews.com/hub/business",
@@ -14,7 +15,8 @@ def test_url_connection_success(url): #all this function does is test if the URL
         pytest.fail(f"Connection failed for {url}: {e}")
 
 
+
 def test_analyzer_initializes():
-    analyzer = DualAnalyzer()
+    analyzer = DoubleLLM()
     assert hasattr(analyzer, "analyze_phi"), "analyze_phi function missing from Dual Analyzer class"
     assert hasattr(analyzer, "analyze_llama"), "analyze_llama missing from Dual Analyzer class"
