@@ -16,7 +16,7 @@ def test_url_connection_success(url): #all this function does is test if the URL
 
 
 
-def test_analyzer_initializes():
+def test_analyzer_initializes(): #tests if an instance of the class is created for both analyize_phi and analyze_llama
     analyzer = DoubleLLM()
     assert hasattr(analyzer, "analyze_phi"), "analyze_phi function missing from Dual Analyzer class"
     assert hasattr(analyzer, "analyze_llama"), "analyze_llama missing from Dual Analyzer class"

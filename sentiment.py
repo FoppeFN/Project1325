@@ -55,7 +55,7 @@ class DoubleLLM(SentimentAnalyzer):
                 response = self.client.generate(model=self.llama_model, prompt=response_prompt)  # this puts the response in which the client generates to a variable named response, we pass in the model and the prompt.
                 #print(response.response)
 
-                if response.response.lower() in ["positive", "negative", "neutral"]: #this simply makes the response.response to lower cause and then checks if it is one of our words we are looking for and if it is we print to our output_file, this code works perfectly since our model only prints in one word, our phi is a different case.
+                if response.response.lower() in ["positive", "negative", "neutral", "neutral.", "positive.", "negative.", "neutral,", "negative,", "positive,"]: #this simply makes the response.response to lower cause and then checks if it is one of our words we are looking for and if it is we print to our output_file, this code works perfectly since our model only prints in one word, our phi is a different case.
                     output_file.write(response.response + "\n")
                     
                 else:  #writes to junk file if any other word except "positive" "neutral" or "negative" is spotted (not really needed since model only prints one word).
