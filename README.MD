@@ -1,4 +1,4 @@
-# PROJECT2
+# PROJECT3
 
 ## Prequsities
 
@@ -131,16 +131,46 @@ Finally, I created main.py in order to combine everything into one simple file, 
 
 
 
-### How to use pytorch.
+### How to use py.test
+
+As I said earlier, you should have downloaded pytest by now using the command I said earlier. All py.test does is test some part of your code, so I just added a test for it connecting to the URL's properly, as well as making sure an instance of the class is created for DualAnalyzer whenever it is called. These are completely up to you how you write your tests, so I will keep it fairly general.
 
 ### How to setup a dockerfile
 
+This step is very simple, make a file name Dockerfile inside the folder you want to containarize, make sure you have docker desktop open
+
+```
+FROM python:3.9.21-slim
+
+WORKDIR /project3
+
+COPY . .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+CMD ["python", "main.py"]
+```
+
+FROM: Sets what version of python you will be using.
+
+WORKDIR: Just names what your work directory will be called.
+
+RUN: Installs all packages in your requirements.txt file, to make one of these use this command
+
+```
+pip freeze > requirements.txt   
+```
+
+CMD: Whenever you use the run command (down below) this is what it will run.
+
+If it builds correctly, you have correctly setup a docker container.
 
 
 ### Command to build and run docker
 ```
 docker build -t cs325finalproject .      
 docker run --rm -v "${PWD}:/project3" cs325finalproject    
+docker run -it --rm -v "${PWD}:/project3" cs325finalproject pytest
 ```
 
-Obviously change the final folder and directory to wherever everything is held to whatever you have it as. Just use the run command everytime you want to run the program and you are finished!
+Obviously change the final folder and directory to wherever everything is held to whatever you have it as. Also, make sure to rebuild it everytime you make changes. Just use the run command with pytest everytime you ONLY want to run the pytest part. If you want to run the program fully, like getting scrapped headlines and such, you run the middle line, that will give you everything you need!
